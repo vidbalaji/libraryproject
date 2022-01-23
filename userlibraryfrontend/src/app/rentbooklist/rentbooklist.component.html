@@ -1,0 +1,23 @@
+
+<p> Books for  {{ userName }} </p>
+<table class="table">
+
+    <thead class="thead-light">
+        <tr>
+            <th>Sl No</th>
+            <th>Book Name</th>
+            <th>Issue Date</th>
+            <th>Due Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let tempRentBook of rentBooks">
+            <td class="align-middle">{{ tempRentBook.rentBookId}}</td>
+            <td class="align-middle">{{ tempRentBook.book.bookName}}</td>
+            <td class="align-middle">{{ tempRentBook.issueDate }}</td>
+            <td class="align-middle">{{ tempRentBook.dueDate}}</td>
+        </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+<div class="page-wrapper">
+
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar .d-block">
+        <div class="logo">
+            <a routerLink="/products">
+                <img src="assets/images/logo.png" alt="My library" class="img-responsive">
+            </a>
+        </div>
+        <div class="menu-sidebar-content js-scrollbar1">
+            <nav class="navbar-sidebar">
+                <ul class="list-unstyled navbar-list">
+
+                    <a routerLink="/books" routerLinkActive="active-link">
+                        List book
+                    </a>
+
+                    <a routerLink="/userList" routerLinkActive="active-link">
+                        User List of Books
+                    </a>
+
+
+                </ul>
+            </nav>
+        </div>
+     
+    </aside>
+    <!-- END MENU SIDEBAR-->
+
+    <div class="page-container  .d-block">
+        <!-- HEADER DESKTOP-->
+
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <router-outlet></router-outlet>
+
+    </div>
+</div>
+
+<!-- ENDS PAGE CONTAINER -->

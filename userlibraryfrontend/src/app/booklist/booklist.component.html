@@ -1,0 +1,21 @@
+<table class="table">
+
+    <thead class="thead-light">
+        <tr>
+            <th>Sl No</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let tempBook of books">
+            <td class="align-middle">{{ tempBook.id}}</td>
+            <td class="align-middle">{{ tempBook.bookName}}</td>
+            <td class="align-middle">{{ tempBook.author }}</td>
+            <td class="align-middle">{{ tempBook.category}}</td>
+        </tr>
+
+    </tbody>
+</table>

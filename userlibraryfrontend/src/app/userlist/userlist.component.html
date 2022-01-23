@@ -1,0 +1,25 @@
+<table class="table">
+
+    <thead class="thead-light">
+        <tr>
+            <th>Sl No</th>
+            <th>User Name</th>
+            <th>Gender</th>
+            <th>List of Books</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let tempUser of users">
+            <td class="align-middle">{{ tempUser.id}}</td>
+            <td class="align-middle">{{ tempUser.user}}</td>
+            <td class="align-middle">{{ tempUser.gender }}</td>
+            <td class="align-middle" *ngIf=    "tempUser.userRentBookList.length >0">
+                <a routerLink="/rentBook/{{ tempUser.id }}" routerLinkActive="active-link">
+                   See list of  books borrowed
+                </a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
