@@ -11,3 +11,4 @@ library project
 <!-- wp:paragraph -->
 <p>The Naming server app plays the main role in making microservices to communicate to library web app. I could not implement API gateway app. But that will be in next release.</p>
 <!-- /wp:paragraph -->
+Added API Gateway server and also Angular js version of library app . 
