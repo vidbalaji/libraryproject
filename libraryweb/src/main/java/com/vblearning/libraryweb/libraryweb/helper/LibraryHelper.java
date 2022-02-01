@@ -1,4 +1,4 @@
-package com.vblearning.libraryweb.libraryweb;
+package com.vblearning.libraryweb.libraryweb.helper;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -9,6 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import com.vblearning.libraryweb.libraryweb.aspect.TrackCustomFlow;
+import com.vblearning.libraryweb.libraryweb.model.Book;
+import com.vblearning.libraryweb.libraryweb.model.RentBook;
+import com.vblearning.libraryweb.libraryweb.model.User;
 
 @Service
 public class LibraryHelper {
@@ -49,6 +54,7 @@ public class LibraryHelper {
 		libraryServiceProxy.deleteBook(id);
 	}
 
+	@TrackCustomFlow
 	public void createUser(User user) {
 		// TODO Auto-generated method stub
 		libraryServiceProxy.createUser(user);

@@ -19,6 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.vblearning.libraryweb.libraryweb.aspect.TrackCustomFlow;
+import com.vblearning.libraryweb.libraryweb.helper.LibraryHelper;
+import com.vblearning.libraryweb.libraryweb.model.Book;
+import com.vblearning.libraryweb.libraryweb.model.RentBook;
+import com.vblearning.libraryweb.libraryweb.model.User;
+
 @Controller
 public class MainController {
 
@@ -91,6 +97,7 @@ public class MainController {
 		return "redirect:/listBook";
 	}
 
+	@TrackCustomFlow
 	@PostMapping({ "/addUser" })
 	public String addUser(@ModelAttribute("user") User user) {
 		libraryHelper.createUser(user);

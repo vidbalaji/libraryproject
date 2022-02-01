@@ -1,4 +1,4 @@
-package com.vblearning.libraryweb.libraryweb;
+package com.vblearning.libraryweb.libraryweb.model;
 
 public class User {
 

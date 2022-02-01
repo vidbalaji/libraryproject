@@ -1,4 +1,4 @@
-package com.vblearning.libraryweb.libraryweb;
+package com.vblearning.libraryweb.libraryweb.helper;
 
 import java.util.List;
 
@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import com.vblearning.libraryweb.libraryweb.aspect.TrackCustomFlow;
+import com.vblearning.libraryweb.libraryweb.model.Book;
+import com.vblearning.libraryweb.libraryweb.model.RentBook;
+import com.vblearning.libraryweb.libraryweb.model.User;
 
 @FeignClient(name = "libraryservice")
 public interface LibraryServiceProxy {
@@ -26,6 +31,7 @@ public interface LibraryServiceProxy {
 	@DeleteMapping("/books/{id}")
 	public ResponseEntity<HttpStatus> deleteBook(@PathVariable("id") int id);
 
+	@TrackCustomFlow
 	@PostMapping("/addUser")
 	public ResponseEntity<Object> createUser(@RequestBody User user);
 
