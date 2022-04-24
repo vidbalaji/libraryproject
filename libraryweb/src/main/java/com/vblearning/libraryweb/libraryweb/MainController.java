@@ -41,6 +41,33 @@ public class MainController {
 
 	@GetMapping({ "/", "/welcome" })
 	public String welcome(Model m) {
+		String newMessages = libraryHelper.getNewMessages();
+
+		if (newMessages != null && !newMessages.isEmpty()) {
+
+			m.addAttribute("newMessages", newMessages);
+			logger.info("messages:" + newMessages);
+			libraryHelper.clearNewMessages();
+			return "/newMessages";
+		} else {
+			newMessages = "";
+		}
+		return "welcome";
+	}
+
+	@GetMapping({ "/newMessages" })
+	public String newMessages(Model m) {
+		String newMessages = libraryHelper.getNewMessages();
+
+		if (newMessages != null && !newMessages.isEmpty()) {
+
+			m.addAttribute("newMessages", newMessages);
+			logger.info("messages:" + newMessages);
+			libraryHelper.clearNewMessages();
+			return "/newMessages";
+		} else {
+			newMessages = "";
+		}
 		return "welcome";
 	}
 

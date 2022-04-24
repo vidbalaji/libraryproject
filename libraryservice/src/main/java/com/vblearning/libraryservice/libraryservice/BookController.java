@@ -4,6 +4,9 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageBuilder;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +23,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class BookController {
 	@Autowired
 	private BookRepositary repo;
+	@Autowired
+	RabbitTemplate rabbitTemplate;
 
 	@GetMapping("/books")
 	public List<Book> listAll() {
@@ -41,7 +46,12 @@ public class BookController {
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedBook.getId())
 				.toUri();
+		String newBook = "New book added:" + savedBook.getBookName();
+		byte[] byteMessage = newBook.getBytes();
 
+		Message message = MessageBuilder.withBody(byteMessage).build();
+
+		rabbitTemplate.send("fanoutex", "", message);
 		return ResponseEntity.created(location).build();
 
 	}

@@ -1,9 +1,13 @@
 package com.vblearning.libraryweb.libraryweb.helper;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +26,18 @@ public class LibraryHelper {
 	List<User> userList;
 	@Autowired
 	LibraryServiceProxy libraryServiceProxy;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private static String newMessages = "";
+
+	@RabbitListener(queues = "newbook", autoStartup = "true")
+	public void getMessage(byte[] message) throws IOException, ClassNotFoundException {
+
+		logger.info("Got a new Message:");
+		String s = new String(message);
+		newMessages = newMessages + s + '\n';
+		logger.info("Got a new Message:" + s);
+
+	}
 
 	public List<Book> listAll() {
 		// TODO Auto-generated method stub
@@ -137,6 +153,17 @@ public class LibraryHelper {
 	public ResponseEntity<HttpStatus> deleteRentBook(@PathVariable("id") int id) {
 		ResponseEntity<HttpStatus> httpStat = libraryServiceProxy.deleteRentBook(id);
 		return httpStat;
+	}
+
+	public void clearNewMessages() {
+		// TODO Auto-generated method stub
+		newMessages = "";
+	}
+
+	public String getNewMessages() {
+		// TODO Auto-generated method stub
+		logger.info("messages:" + newMessages);
+		return newMessages;
 	}
 
 }

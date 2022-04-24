@@ -20,7 +20,6 @@ th, td {
 			Add User</a> <br> <a href="../returnBook">Return Book</a> <br>
 		<a href="../rentBook">Rent Book</a> <br> <a
 			href="../listBookByCategory">List Book By Category</a> <br>
-			<a
-			href="../newMessages">New Messages</a> <br>
+			<h3>${newMessages}</h3><br>
 </body>
 </html>
